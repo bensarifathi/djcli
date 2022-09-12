@@ -1,0 +1,10 @@
+from typing import Any
+from injector import inject
+from {{app_name}}.services.{{model|capfirst}} import {{model|capfirst}}Service
+
+
+class {{model|capfirst}}ServiceMixins:
+    @inject
+    def __init__(self,  {{model|lower}}_service: {{model|capfirst}}Service ,**kwargs: Any) -> None:
+        self.{{model|lower}}_service = {{model|lower}}_service
+        super().__init__(**kwargs)

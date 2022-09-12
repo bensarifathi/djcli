@@ -1,0 +1,25 @@
+from django.db.models.query import QuerySet
+from app.models import {{model}}
+from django.shortcuts import get_object_or_404
+
+
+class ReviewService:
+
+    def get_all(self) -> QuerySet[{{model|capfirst}}]:
+        return {{model|capfirst}}.objects.all()
+
+    def get_by_id(self, id: int) -> {{model|capfirst}}:
+        return get_object_or_404({{model|capfirst}}, id)
+
+    def create(self, **kwargs) -> {{model|capfirst}}:
+        return {{model|capfirst}}.objects.create(**kwargs)
+    
+    def update(self, id: int, **kwargs) -> {{model|capfirst}}:
+        {{model|lower}} = self.get_by_id(id)
+        for k, v in kwargs.items():
+            setattr({{model|lower}}, k, v)
+        {{model|lower}}.save()
+        return {{model|lower}}
+    
+    def delete(self, id: int) -> None:
+        self.get_by_id(id).delete()

@@ -1,0 +1,9 @@
+from django.db import models
+from .abstract import SoftDelete, Timestamps
+
+
+class {{name|capfirst}}(SoftDelete, Timestamps):
+    """
+        implement your model columns
+    """
+    pass
