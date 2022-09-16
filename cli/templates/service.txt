@@ -3,7 +3,7 @@ from app.models import {{model}}
 from django.shortcuts import get_object_or_404
 
 
-class ReviewService:
+class {{model|capfirst}}Service:
 
     def get_all(self) -> QuerySet[{{model|capfirst}}]:
         return {{model|capfirst}}.objects.all()
